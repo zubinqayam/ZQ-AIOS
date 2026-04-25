@@ -39,6 +39,7 @@ def append(entry: dict[str, Any]) -> None:
     """
     _ensure_dir()
     with open(LEDGER_FILE, "a", encoding="utf-8") as fh:
+        # default=str converts timestamps and enums to strings for JSONL
         fh.write(json.dumps(entry, default=str) + "\n")
 
 
@@ -54,8 +55,8 @@ def replay() -> list[dict[str, Any]]:
 
     entries: list[dict[str, Any]] = []
     with open(LEDGER_FILE, encoding="utf-8") as fh:
-        for line in fh:
-            line = line.strip()
-            if line:
-                entries.append(json.loads(line))
+        for raw_line in fh:
+            stripped_line = raw_line.strip()
+            if stripped_line:
+                entries.append(json.loads(stripped_line))
     return entries
