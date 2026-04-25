@@ -49,3 +49,8 @@ class TestSchemaValidation:
         order = WorkOrder(id="x", action="ping", payload={}, metadata="bad")  # type: ignore[arg-type]
         with pytest.raises(SchemaValidationError, match="'metadata'"):
             validate_work_order(order)
+
+    def test_non_bool_replay_fails(self):
+        order = WorkOrder(id="x", action="ping", payload={"k": 1}, replay="yes")  # type: ignore[arg-type]
+        with pytest.raises(SchemaValidationError, match="'replay'"):
+            validate_work_order(order)

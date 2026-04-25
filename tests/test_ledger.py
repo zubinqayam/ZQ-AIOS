@@ -48,3 +48,9 @@ class TestLedger:
         assert len(self.ledger) == 0
         self.ledger.record("o", EventType.SCHEMA_PASS)
         assert len(self.ledger) == 1
+
+    def test_all_entries_returns_snapshot_copy(self):
+        self.ledger.record("order-1", EventType.SCHEMA_PASS)
+        snapshot = self.ledger.all_entries()
+        snapshot.clear()
+        assert len(self.ledger) == 1

@@ -13,6 +13,7 @@ import pytest
 
 from governance.ledger import EventType
 from integration import build_pipeline
+from core import PipelineResult
 from wosds.schema import WorkOrder
 
 
@@ -157,3 +158,21 @@ class TestReplay:
         events = [e.event for e in ledger.for_order(order.id)]
         assert EventType.REPLAY_TRIGGERED in events
         assert EventType.PIPELINE_COMPLETE in events
+
+
+class TestPipelineResult:
+    def test_as_dict(self):
+        result = PipelineResult(
+            order_id="o-1",
+            success=False,
+            result={"k": 1},
+            error="failure",
+            stage="schema",
+        )
+        assert result.as_dict() == {
+            "order_id": "o-1",
+            "success": False,
+            "result": {"k": 1},
+            "error": "failure",
+            "stage": "schema",
+        }
