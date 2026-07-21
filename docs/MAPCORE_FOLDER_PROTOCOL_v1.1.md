@@ -101,7 +101,7 @@ This keeps review effort proportional to what changed since the last review cycl
 
 ## MAPCORE Register — Seed Entries
 
-| Timestamp (UTC) | Topic | Folder | Subfolder | Review Status | Version | Notes |
-|---|---|---|---|---|---|---|
-| 2026-07-21 | MAPCORE Folder Protocol v1.1 specification | ZQ Workstation | — | reviewed | v1.1 | Formalizes Issue #17 |
-| 2026-07-21 | Issue #17 — append-only update request | ZQ Workstation | — | superseded | v1.1 | Superseded by this protocol document |
+| ID | Timestamp (UTC) | Topic | Folder | Subfolder | Review Status | Version | Notes |
+|---|---|---|---|---|---|---|---|
+| mapcore-protocol-v1.1 | 2026-07-21 | MAPCORE Folder Protocol v1.1 specification | ZQ Workstation | — | reviewed | v1.1 | Formalizes Issue #17 |
+| issue-17 | 2026-07-21 | Issue #17 — append-only update request | ZQ Workstation | — | superseded | v1.1 | Superseded by this protocol document |
