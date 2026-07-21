@@ -23,7 +23,7 @@ All documentation governed by this protocol is **append-only**:
 - **No deletion.** Previous versions and prior documentation are never overwritten or removed. Every earlier section remains intact for reference.
 - **Additions only.** New content is added either at the bottom of the existing document or as a new, clearly marked version section (e.g. `v1.1`, `v1.2`).
 - **Timestamp on every update.** Each update carries an explicit UTC timestamp and a version marker.
-- **Version chain.** A new version section must reference the version it supersedes, preserving a readable history chain.
+- **Version chain.** For v1.2+ sections, the new version must reference the version it supersedes, preserving a readable history chain.
 
 ## 3. Folder → Subfolder Architecture
 
@@ -54,7 +54,8 @@ The **MAPCORE register** is the master index of all chats, folders, and subfolde
 
 | Field | Description |
 |---|---|
-| `timestamp` | UTC date-time of the register entry |
+| id | Unique identifier for the chat, discussion, or artifact (e.g., issue number, chat UUID, or auto-generated ID) |
+| `timestamp` | UTC timestamp of the register entry, format `YYYY-MM-DD` (add `HH:MM` when same-day ordering matters) |
 | `topic` | Short title of the discussion or artifact |
 | `folder` | Parent folder (default: ZQ Workstation) |
 | `subfolder` | Subfolder, if scoped (e.g. INNM-WOSDS, ZQ Conference Room); empty if folder-level |
@@ -129,3 +130,7 @@ Two clarifications to this protocol's intent, resolved via Conflict Register ent
 | 2026-07-21 | v1.1-H Hardening Specification | ZQ Workstation | — | reviewed | v1.1 Addendum A | From ZQ QAQC test suite (100 FMs) |
 | 2026-07-21 | v1.1-I Implementation Guide | ZQ Workstation | — | reviewed | v1.1 Addendum A | Reference tech satisfying v1.1-H |
 | 2026-07-21 | Governance artifacts (Decision/Provenance/Conflict/Metrics) | ZQ Workstation | — | reviewed | v1.1 Addendum A | Append-only registers, `docs/governance/` |
+| ID | Timestamp (UTC) | Topic | Folder | Subfolder | Review Status | Version | Notes |
+|---|---|---|---|---|---|---|---|
+| mapcore-protocol-v1.1 | 2026-07-21 | MAPCORE Folder Protocol v1.1 specification | ZQ Workstation | — | reviewed | v1.1 | Formalizes Issue #17 |
+| issue-17 | 2026-07-21 | Issue #17 — append-only update request | ZQ Workstation | — | superseded | v1.1 | Superseded by this protocol document |
