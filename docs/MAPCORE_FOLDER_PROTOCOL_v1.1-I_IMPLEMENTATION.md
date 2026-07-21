@@ -83,14 +83,15 @@ Wrap all transcript content entering a reasoning context in structural tags:
 
 ## 6. I-5 — Two-Phase Commit Thread Mobility + ABAC (satisfies H-3.1–H-3.4)
 
-Thread relocation executes as a **2PC state machine**:
+Thread relocation executes atomically using SQLite's ATTACH DATABASE feature to run a single multi-database transaction:
 
-```
-PREPARE:  validate target container scope + ABAC classification check
-          lock thread row in source and target registers
-COMMIT:   insert target register entry → mark source entry superseded → write move audit record
-ABORT:    release locks, no partial state (any failure before COMMIT)
-```
+1. ATTACH 'target_register.db' AS target;
+2. BEGIN IMMEDIATE;
+3. Verify ABAC classification and container scope;
+4. INSERT INTO target.register ...
+5. INSERT INTO main.register ... (to record supersession/move)
+6. INSERT INTO main.audit_log ...
+7. COMMIT;
 
 - **ABAC tags:** `sensitivity` column on threads; target containers declare a max classification. A move into a lower-classification container requires an authorized override recorded in the Decision Ledger.
 - **Containment:** resolve all file access against the subfolder root and reject `..` traversal (chroot-style path clamping).
