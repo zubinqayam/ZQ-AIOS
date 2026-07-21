@@ -46,7 +46,7 @@ CREATE TABLE register (
   status        TEXT NOT NULL CHECK (status IN ('Active','Pending_Review','Archived')),
   sensitivity   TEXT NOT NULL DEFAULT 'standard',  -- ABAC tag (I-5)
   created_at    TEXT NOT NULL,
-  superseded_by TEXT REFERENCES register(id)       -- append-only chain
+  supersedes_id TEXT REFERENCES register(id)       -- append-only chain
 );
 ```
 
