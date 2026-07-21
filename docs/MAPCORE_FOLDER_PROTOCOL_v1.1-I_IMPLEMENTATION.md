@@ -43,7 +43,7 @@ CREATE TABLE register (
   topics        TEXT NOT NULL,           -- JSON array
   keywords      TEXT NOT NULL,           -- JSON array
   version       TEXT NOT NULL,
-  status        TEXT NOT NULL CHECK (status IN ('Active','Pending_Review','Archived')),
+  review_status TEXT NOT NULL CHECK (review_status IN ('pending','in-review','reviewed','superseded')),
   sensitivity   TEXT NOT NULL DEFAULT 'standard',  -- ABAC tag (I-5)
   created_at    TEXT NOT NULL,
   supersedes_id TEXT REFERENCES register(id)       -- append-only chain
