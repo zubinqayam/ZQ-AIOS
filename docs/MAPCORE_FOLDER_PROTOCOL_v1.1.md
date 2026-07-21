@@ -23,7 +23,7 @@ All documentation governed by this protocol is **append-only**:
 - **No deletion.** Previous versions and prior documentation are never overwritten or removed. Every earlier section remains intact for reference.
 - **Additions only.** New content is added either at the bottom of the existing document or as a new, clearly marked version section (e.g. `v1.1`, `v1.2`).
 - **Timestamp on every update.** Each update carries an explicit UTC timestamp and a version marker.
-- **Version chain.** A new version section must reference the version it supersedes, preserving a readable history chain.
+- **Version chain.** For v1.2+ sections, the new version must reference the version it supersedes, preserving a readable history chain.
 
 ## 3. Folder → Subfolder Architecture
 
