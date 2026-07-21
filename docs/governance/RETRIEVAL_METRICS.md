@@ -16,7 +16,7 @@
 | Retrieval latency | ms | End-to-end Step 1→3 duration | Alert > 30 s (FM 6.5) |
 | Chunk count | Integer | Streamed segments loaded via line-offset chunking | — |
 | Confidence score | 0.0–1.0 | Engine self-assessment of answer grounding | Alert < 0.7 |
-| Grounding coverage | % | Share of synthesized claims carrying a citation pointer to raw transcript lines | Must be 100% (H-2.2); any ungrounded claim is a protocol violation |
+| Grounding coverage | % | Share of synthesized claims carrying a citation pointer to raw transcript lines | Must be 100% (H-2.1); any ungrounded claim is a protocol violation |
 
 ## Recording Rules
 
