@@ -60,7 +60,7 @@ The QA/QC stress test identified **100 failure modes across 10 categories** (ALG
   - **Integrity Profile A:** a cryptographic hash (SHA-256 or stronger) computed and stored for every raw transcript; verification on read.
   - **Integrity Profile B (recommended for compliance deployments):** hash-chained (Merkle-style) transcript logs providing tamper-evident ordering across the full archive.
 - **H-4.3 Continuous reconciliation.** A background process must continually cross-check register entries against physical transcripts. Every discrepancy found must be appended to `Discrepancy_Log.md` in the domain root and surfaced to operators; discrepancies are never silently auto-resolved.
-- **H-4.4 Contradiction governance.** Conflicting facts across transcripts are resolved by **decision, not deletion**: the Knowledge Model records the active decision, the superseded decision, the rationale, and the approving authority. Default precedence is temporal (newer governs) *unless* an explicit human/authorized override is recorded. Both conflicting transcripts remain fully preserved. See the Conflict Register (`docs/governance/CONFLICT_REGISTER.md`).
+- **H-4.4 Contradiction governance.** Conflicting facts across transcripts are resolved by **decision, not deletion**: the Decision Ledger records the active decision, the superseded decision, the rationale, and the approving authority. Default precedence is temporal (newer governs) *unless* an explicit human/authorized override is recorded. Both conflicting transcripts remain fully preserved. See the Conflict Register (`docs/governance/CONFLICT_REGISTER.md`).
 
 ### 3.5 D5 — Security & Access Boundaries
 
