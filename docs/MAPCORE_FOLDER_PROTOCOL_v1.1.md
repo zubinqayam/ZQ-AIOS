@@ -54,6 +54,7 @@ The **MAPCORE register** is the master index of all chats, folders, and subfolde
 
 | Field | Description |
 |---|---|
+| id | Unique identifier for the chat, discussion, or artifact (e.g., issue number, chat UUID, or auto-generated ID) |
 | `timestamp` | UTC date-time of the register entry |
 | `topic` | Short title of the discussion or artifact |
 | `folder` | Parent folder (default: ZQ Workstation) |
