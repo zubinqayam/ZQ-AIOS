@@ -92,11 +92,33 @@ This keeps review effort proportional to what changed since the last review cycl
 
 ---
 
+## Addendum A — Hardening & Implementation Documents (2026-07-21)
+
+*Appended per the append-only policy (Section 2). Nothing above is modified.*
+
+Following the ZQ QAQC automated test suite (ALGA / Mr. Q / DRM — 100 failure modes across 10 categories) and its independent QA/QC critique, the protocol documentation now separates into a three-document hierarchy:
+
+| Document | Role |
+|---|---|
+| `docs/MAPCORE_FOLDER_PROTOCOL_v1.1.md` (this document) | Normative protocol — *what* the workspace requires |
+| `docs/MAPCORE_FOLDER_PROTOCOL_v1.1-H_HARDENING.md` | Normative supplement — production-readiness guarantees (failure modes, security, concurrency, integrity, migration, governance profiles) |
+| `docs/MAPCORE_FOLDER_PROTOCOL_v1.1-I_IMPLEMENTATION.md` | Implementation guide — reference technologies satisfying v1.1-H (SQLite WAL, Merkle trees, 2PC, ABAC, XML boundaries, streaming retrieval) |
+
+Four append-only governance artifacts are formalized under `docs/governance/`: Decision Ledger, Provenance Ledger, Conflict Register, Retrieval Metrics.
+
+Two clarifications to this protocol's intent, resolved via Conflict Register entries CON-2026-001/002:
+
+1. **Evidence loading.** "Review" of discussions by the engine means *all relevant transcript evidence* must be reviewed before synthesis. Evidence may be loaded incrementally or streamed in chunks, provided no relevant section is omitted and every claim stays traceable to raw source locations. (Normative form: v1.1-H requirement H-2.1.)
+2. **Contradiction handling.** Conflicting statements across transcripts are resolved by governed decision — active decision, superseded decision, rationale, approving authority — never by deleting or overwriting history. (Normative form: v1.1-H requirement H-4.4.)
+
+---
+
 ## Version History
 
 | Version | Date (UTC) | Change |
 |---|---|---|
 | v1.1 | 2026-07-21 | Initial formal specification. Converts Issue #17 requirements into protocol form: append-only policy, MAPCORE register, folder → subfolder architecture, incremental review workflow. |
+| v1.1 Addendum A | 2026-07-21 | Appended: three-document hierarchy (v1.1 / v1.1-H / v1.1-I), governance artifacts, and two clarifications (evidence loading, contradiction handling). No prior content modified. |
 
 ## MAPCORE Register — Seed Entries
 
@@ -104,3 +126,6 @@ This keeps review effort proportional to what changed since the last review cycl
 |---|---|---|---|---|---|---|
 | 2026-07-21 | MAPCORE Folder Protocol v1.1 specification | ZQ Workstation | — | reviewed | v1.1 | Formalizes Issue #17 |
 | 2026-07-21 | Issue #17 — append-only update request | ZQ Workstation | — | superseded | v1.1 | Superseded by this protocol document |
+| 2026-07-21 | v1.1-H Hardening Specification | ZQ Workstation | — | reviewed | v1.1 Addendum A | From ZQ QAQC test suite (100 FMs) |
+| 2026-07-21 | v1.1-I Implementation Guide | ZQ Workstation | — | reviewed | v1.1 Addendum A | Reference tech satisfying v1.1-H |
+| 2026-07-21 | Governance artifacts (Decision/Provenance/Conflict/Metrics) | ZQ Workstation | — | reviewed | v1.1 Addendum A | Append-only registers, `docs/governance/` |
