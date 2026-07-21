@@ -25,7 +25,7 @@
 1. Both conflicting transcripts remain fully preserved — always.
 2. Default: temporal precedence — the newer transcript governs active operational context.
 3. Override: an explicit authorized decision (recorded in the Decision Ledger) may establish the older statement as governing, with rationale. Temporal precedence alone is not proof of correctness.
-4. The Knowledge Model records: active decision, superseded decision, rationale, approving authority.
+4. The Decision Ledger records: active decision, superseded decision, rationale, approving authority.
 
 ## Entries
 
